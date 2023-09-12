@@ -1,0 +1,12 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Funcionario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ng-container *ngFor="let funcionario of this.funcionarios">
+    Código do funcionario: {{ funcionario.CoddFun }}
+  </ng-container>
+  <ion-button (click)="getFuncionarios()">listar</ion-button>
+</ion-content>
