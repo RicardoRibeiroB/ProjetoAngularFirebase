@@ -6,7 +6,9 @@
 
 <ion-content [fullscreen]="true">
   <ng-container *ngFor="let funcionario of this.funcionarios">
-    Código do funcionario: {{ funcionario.CoddFun }}
+    Código do funcionario: {{ funcionario.CodFun }}
+    Código do funcionario: {{ funcionario.Nome }}
   </ng-container>
   <ion-button (click)="getFuncionarios()">listar</ion-button>
+  <ion-button (click)="getFuncionariosRemove()">Remover</ion-button>
 </ion-content>
