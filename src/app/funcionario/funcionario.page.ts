@@ -17,7 +17,16 @@ export class FuncionarioPage {
   }
 
   getFuncionarios(){
-    fetch('http://localhost/exercicio/funcionario/listar_funcionario.php'
+    let funcionario = { CodFun: '' };
+
+    fetch('http://localhost/exercicio/funcionario/listar_funcionario.php',
+			{
+			  method: 'POST',
+			  headers: {
+			    'Content-Type': 'application/json',
+			  },
+			  body: JSON.stringify(funcionario)
+			}
 		)
     .then(response => response.json())
     .then(response => {
