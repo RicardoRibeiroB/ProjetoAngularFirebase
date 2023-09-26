@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -11,6 +12,7 @@ export class FuncionarioPage {
   funcionarios: any;
   insirir = 1;
   mensagem: any;
+  filtro: any;
   constructor(){
     this.getFuncionarios()
     this.getAllFuncionarios()
@@ -148,4 +150,45 @@ export class FuncionarioPage {
       console.log('processo finalizado');
     })
   }
+  consultar(dados: any){
+    let endpoint = '';
+    let funcionario = { campo: dados.campo }
+    if(this.filtro == "nome"){
+      endpoint = 'http://localhost/exercicio/funcionario/consultar_funcionario_por_nome.php';
+    }
+    if(this.filtro == "cargo"){
+      endpoint = 'http://localhost/exercicio/funcionario/consultar_funcionario_por_cargo.php';
+    }
+    if(this.filtro == "cidade"){
+      endpoint = 'http://localhost/exercicio/funcionario/consultar_funcionario_por_cidade.php';
+    }
+    if(this.filtro == "telefone"){
+      endpoint = 'http://localhost/exercicio/funcionario/consultar_funcionario_por_telefone.php';
+    }
+    fetch(endpoint,
+			{
+			  method: 'POST',
+			  headers: {
+			    'Content-Type': 'application/json',
+			  },
+			  body: JSON.stringify(funcionario)
+			}
+		)
+    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+      this.funcionarios = response['funcionarios'];
+    })
+    .catch(erro => {
+      console.log(erro);
+    })
+    .finally(()=>{
+      this.isLoading = false;
+      console.log('processo finalizado');
+    })
+   }
+   setFiltro(dados: any){
+    this.filtro = dados.detail.value;
+    console.log(dados);
+   }
 }
