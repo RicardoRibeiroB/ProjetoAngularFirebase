@@ -113,7 +113,32 @@ export class FuncionarioPage {
     .then(resp => resp.json())
     .then(resp=> {
       console.log(resp);
+    })
+    .catch(erro => {
+      console.log(erro);
+    })
+    .finally(()=>{
+      this.isLoading = false;
+      console.log('processo finalizado');
+    })
+  }
+  atualizarFuncionario(form: any){
+    let funcionarios = form;
+    // console.log(form);
+    this.isLoading = true;
+    fetch('http://localhost/exercicio/funcionario/atualizar_funcionario.php',
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(funcionarios)
+    })
+    .then(resp => resp.json())
+    .then(resp=> {
+      console.log(resp);
       this.mensagem = resp.mensagem;
+      this.getAllFuncionarios();
     })
     .catch(erro => {
       console.log(erro);

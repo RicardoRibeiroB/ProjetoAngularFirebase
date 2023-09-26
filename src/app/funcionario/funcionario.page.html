@@ -16,8 +16,10 @@
               Código: {{ funcionario.CodFun }}
               Nome: {{ funcionario.Nome }}
             </ion-label>
-            <ion-icon name="trash-outline" (click)="removerFuncionario(funcionario.CodFun)" class="icon-delete"></ion-icon>
-            <!-- <ion-button (click)="removerFuncionario(funcionario.CodFun)">remover</ion-button>           -->
+            <ion-row>
+              <ion-col size="6"><ion-icon name="trash-outline" (click)="removerFuncionario(funcionario.CodFun)" class="icon"></ion-icon></ion-col>
+              <ion-col size="6"> <ion-icon name="pencil-outline" (click)="mostrarinput(3)" class="icon"></ion-icon></ion-col>
+            </ion-row>
           </ion-item>
         </ng-container>
       </ion-list>
@@ -31,7 +33,7 @@
           <ion-item>
             <ion-row>
               <form #insirir="ngForm" (ngSubmit)="adicionarFuncionarios(insirir.value)">
-                <ion-input ngModel name="nome" type="text" placeholder="enviar"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="nome"></ion-input>
                 <ion-button type="submit">teste</ion-button>
               </form>
               {{ this.mensagem }}
@@ -41,5 +43,22 @@
       </ion-col>
     </ion-row>
   </ng-container>
-  
+  <ng-container *ngIf="this.insirir == 3">
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-row>
+              <form #atualizar="ngForm" (ngSubmit)="atualizarFuncionario(atualizar.value)">
+                <ion-input ngModel name="codigo" type="text" placeholder="codigo"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="nome"></ion-input>
+                <ion-button type="submit">enviar</ion-button>
+              </form>
+              {{ this.mensagem }}
+            </ion-row>      
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ng-container>
 </ion-content>
