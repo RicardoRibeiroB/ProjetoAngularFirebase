@@ -104,6 +104,9 @@ export class FuncionarioPage {
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
+  modalAtt(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
   
   
   adicionarFuncionarios(form: any){
