@@ -18,16 +18,16 @@
           <ion-item>
             <ion-row>
               <form #inserir="ngForm" (ngSubmit)="adicionarFuncionarios(inserir.value)">
-                <ion-input ngModel name="nome" type="text" placeholder="Nome"></ion-input>
-                <ion-input ngModel name="nome" type="text" placeholder="Sobrenome"></ion-input>
-                <ion-input ngModel name="nome" type="text" placeholder="Cargo"></ion-input>
-                <ion-input ngModel name="nome" type="text" placeholder="Data de Nascimento"></ion-input>
-                <ion-input ngModel name="nome" type="text" placeholder="Endereço"></ion-input>
-                <ion-input ngModel name="nome" type="text" placeholder="Cidade"></ion-input>
-                <ion-input ngModel name="nome" type="text" placeholder="CEP"></ion-input>
-                <ion-input ngModel name="nome" type="text" placeholder="País"></ion-input>
-                <ion-input ngModel name="nome" type="text" placeholder="Telefone"></ion-input>
-                <ion-input ngModel name="nome" type="text" placeholder="Salario"></ion-input>
+                <ion-input ngModel name="Nome" type="text" placeholder="Nome"></ion-input>
+                <ion-input ngModel name="Sobrenome" type="text" placeholder="Sobrenome"></ion-input>
+                <ion-input ngModel name="Cargo" type="text" placeholder="Cargo"></ion-input>
+                <ion-input ngModel name="DataNasc" type="date" placeholder="Data de Nascimento"></ion-input>
+                <ion-input ngModel name="Endereco" type="text" placeholder="Endereço"></ion-input>
+                <ion-input ngModel name="Cidade" type="text" placeholder="Cidade"></ion-input>
+                <ion-input ngModel name="CEP" type="text" placeholder="CEP"></ion-input>
+                <ion-input ngModel name="Pais" type="text" placeholder="País"></ion-input>
+                <ion-input ngModel name="Fone" type="tel"  placeholder="Telefone"></ion-input>
+                <ion-input ngModel name="Salario" type="text" placeholder="Salario"></ion-input>
                 <ion-button type="submit">teste</ion-button>
               </form>
               {{ this.mensagem }}
@@ -68,27 +68,27 @@
   
   <ion-row>
     <ion-col>
-      <ion-row class="informacoes">
-        <ion-col size="1">Codigo</ion-col>
-        <ion-col size="1">Nome</ion-col>
-        <ion-col size="1">Sobrenome</ion-col>
+      <ion-row class="header-info">
+        <ion-col size="1.3">Codigo</ion-col>
+        <ion-col size="1.2">Nome</ion-col>
+        <ion-col size="1.5">Sobrenome</ion-col>
         <ion-col size="1">Cargo</ion-col>
-        <ion-col size="1">Data de Nascimento</ion-col>
-        <ion-col size="1">Endereço</ion-col>
-        <ion-col size="1">Cidade</ion-col>
-        <ion-col size="1">Telefone</ion-col>
-        <ion-col size="1">Salário</ion-col>
+        <ion-col size="1.6">Data de Nascimento</ion-col>
+        <ion-col size="1.2">Endereço</ion-col>
+        <ion-col size="1.2">Cidade</ion-col>
+        <ion-col size="1.2">Telefone</ion-col>
+        <ion-col size="1.2">Salário</ion-col>
       </ion-row>
       <ion-list>
         <ng-container *ngFor="let funcionario of this.funcionarios">
-          <ion-item>
-            
-            <ion-label>{{ funcionario.CodFun }}</ion-label>
+          <ion-item class="informacoes">
+            <ion-label class="item1">{{ funcionario.CodFun }}</ion-label>
             <ion-label>{{ funcionario.Nome }}</ion-label>
             <ion-label>{{ funcionario.Sobrenome }}</ion-label>
             <ion-label>{{ funcionario.Cargo }}</ion-label>
-            <ion-label>{{ funcionario.DataNasc }}</ion-label>
+            <ion-label class="info_data">{{ funcionario.DataNasc }}</ion-label>
             <ion-label>{{ funcionario.Endereco }}</ion-label>
+            <ion-label>{{ funcionario.Cidade }}</ion-label>
             <ion-label>{{ funcionario.Fone }}</ion-label>
             <ion-label>{{ funcionario.Salario }}</ion-label>             
             
