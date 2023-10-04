@@ -28,7 +28,7 @@
                 <ion-input ngModel name="Pais" type="text" placeholder="País"></ion-input>
                 <ion-input ngModel name="Fone" type="tel"  placeholder="Telefone"></ion-input>
                 <ion-input ngModel name="Salario" type="text" placeholder="Salario"></ion-input>
-                <ion-button type="submit">teste</ion-button>
+                <ion-button type="submit">Enviar</ion-button>
               </form>
               {{ this.mensagem }}
             </ion-row>      
@@ -119,22 +119,44 @@
       </ion-col>
     </ion-row>
   </ng-container>
-  <ng-container *ngIf="this.inserir == 3">
-    <ion-row>
-      <ion-col>
-        <ion-list>
-          <ion-item>
-            <ion-row>
-              <form #atualizar="ngForm" (ngSubmit)="atualizarFuncionario(atualizar.value)">
-                <ion-input ngModel name="codigo" type="text" placeholder="codigo"></ion-input>
-                <ion-input ngModel name="nome" type="text" placeholder="nome"></ion-input>
-                <ion-button type="submit">enviar</ion-button>
-              </form>
-              {{ this.mensagem }}
-            </ion-row>      
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ng-container>
+  
+  <ion-button (click)="modalAtt(true)">buscar</ion-button>
+  <ion-modal [isOpen]="isModalOpen2">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Modal</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="modalAtt(false)">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item>
+                  <ion-row>
+                    <form #atualizar="ngForm" (ngSubmit)="atualizarFuncionario(atualizar.value)">
+                      <ion-input ngModel name="Nome" type="text" placeholder="Nome"></ion-input>
+                      <ion-input ngModel name="Sobrenome" type="text" placeholder="Sobrenome"></ion-input>
+                      <ion-input ngModel name="Cargo" type="text" placeholder="Cargo"></ion-input>
+                      <ion-input ngModel name="DataNasc" type="date" placeholder="Data de Nascimento"></ion-input>
+                      <ion-input ngModel name="Endereco" type="text" placeholder="Endereço"></ion-input>
+                      <ion-input ngModel name="Cidade" type="text" placeholder="Cidade"></ion-input>
+                      <ion-input ngModel name="CEP" type="text" placeholder="CEP"></ion-input>
+                      <ion-input ngModel name="Pais" type="text" placeholder="País"></ion-input>
+                      <ion-input ngModel name="Fone" type="tel"  placeholder="Telefone"></ion-input>
+                      <ion-input ngModel name="Salario" type="text" placeholder="Salario"></ion-input>
+                      <ion-button type="submit">enviar</ion-button>
+                    </form>
+                    {{ this.mensagem }}
+                  </ion-row>      
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
 </ion-content>

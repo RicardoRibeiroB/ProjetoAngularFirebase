@@ -104,8 +104,8 @@ export class FuncionarioPage {
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
-  modalAtt(isOpen: boolean) {
-    this.isModalOpen = isOpen;
+  modalAtt(isOpen2: boolean) {
+    this.isModalOpen2 = isOpen2;
   }
   
   
