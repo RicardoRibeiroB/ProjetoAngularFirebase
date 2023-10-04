@@ -2,7 +2,41 @@
   <ion-toolbar>
     <ion-title>Funcionario</ion-title>
   </ion-toolbar>
-  <ion-button (click)="mostrarinput(2)">insirir novo funcionario</ion-button>
+  <ion-button (click)="setOpen(true)">Inserir novo funcionario</ion-button>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Modal</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-list>
+          <ion-item>
+            <ion-row>
+              <form #inserir="ngForm" (ngSubmit)="adicionarFuncionarios(inserir.value)">
+                <ion-input ngModel name="nome" type="text" placeholder="Nome"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="Sobrenome"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="Cargo"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="Data de Nascimento"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="Endereço"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="Cidade"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="CEP"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="País"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="Telefone"></ion-input>
+                <ion-input ngModel name="nome" type="text" placeholder="Salario"></ion-input>
+                <ion-button type="submit">teste</ion-button>
+              </form>
+              {{ this.mensagem }}
+            </ion-row>      
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -34,13 +68,30 @@
   
   <ion-row>
     <ion-col>
+      <ion-row class="informacoes">
+        <ion-col size="1">Codigo</ion-col>
+        <ion-col size="1">Nome</ion-col>
+        <ion-col size="1">Sobrenome</ion-col>
+        <ion-col size="1">Cargo</ion-col>
+        <ion-col size="1">Data de Nascimento</ion-col>
+        <ion-col size="1">Endereço</ion-col>
+        <ion-col size="1">Cidade</ion-col>
+        <ion-col size="1">Telefone</ion-col>
+        <ion-col size="1">Salário</ion-col>
+      </ion-row>
       <ion-list>
         <ng-container *ngFor="let funcionario of this.funcionarios">
           <ion-item>
-            <ion-label>
-              Código: {{ funcionario.CodFun }}
-              Nome: {{ funcionario.Nome }}
-            </ion-label>
+            
+            <ion-label>{{ funcionario.CodFun }}</ion-label>
+            <ion-label>{{ funcionario.Nome }}</ion-label>
+            <ion-label>{{ funcionario.Sobrenome }}</ion-label>
+            <ion-label>{{ funcionario.Cargo }}</ion-label>
+            <ion-label>{{ funcionario.DataNasc }}</ion-label>
+            <ion-label>{{ funcionario.Endereco }}</ion-label>
+            <ion-label>{{ funcionario.Fone }}</ion-label>
+            <ion-label>{{ funcionario.Salario }}</ion-label>             
+            
             <ion-row>
               <ion-col size="6"><ion-icon name="trash-outline" (click)="removerFuncionario(funcionario.CodFun)" class="icon"></ion-icon></ion-col>
               <ion-col size="6"> <ion-icon name="pencil-outline" (click)="mostrarinput(3)" class="icon"></ion-icon></ion-col>
@@ -51,7 +102,7 @@
     </ion-col>
   </ion-row>
 
-  <ng-container *ngIf="this.insirir == 2">
+  <ng-container *ngIf="this.inserir == 2">
     <ion-row>
       <ion-col>
         <ion-list>
@@ -68,7 +119,7 @@
       </ion-col>
     </ion-row>
   </ng-container>
-  <ng-container *ngIf="this.insirir == 3">
+  <ng-container *ngIf="this.inserir == 3">
     <ion-row>
       <ion-col>
         <ion-list>

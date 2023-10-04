@@ -7,10 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./funcionario.page.scss'],
 })
 export class FuncionarioPage {
-
+  isModalOpen = false;
+  isModalOpen2 = false;
   isLoading: boolean = false;
   funcionarios: any;
-  insirir = 1;
+  inserir = 1;
   mensagem: any;
   filtro: any;
   constructor(){
@@ -97,9 +98,14 @@ export class FuncionarioPage {
   }
   
   mostrarinput(valor: any){
-    this.insirir = valor;
+    console.log('clicou');
   }
 
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+  
+  
   adicionarFuncionarios(form: any){
     let funcionarios = form;
     // console.log(form);
@@ -114,6 +120,7 @@ export class FuncionarioPage {
     })
     .then(resp => resp.json())
     .then(resp=> {
+      this.getAllFuncionarios();
       console.log(resp);
     })
     .catch(erro => {
