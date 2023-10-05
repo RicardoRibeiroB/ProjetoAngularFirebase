@@ -44,8 +44,11 @@
   <ion-row>
     <ion-col size="4">
       <form #pesquisar="ngForm" (ngSubmit)="consultar(pesquisar.value)">
-        <ion-input ngModel name="campo" type="text"></ion-input>
-        <ion-button type="submit">Consultar</ion-button>
+        <ion-item>
+          <ion-input label="Consultar" labelPlacement="floating" placeholder="Digite o dado"></ion-input>
+          <ion-button type="submit">Consultar</ion-button>
+        </ion-item>
+        
       </form>
     </ion-col>
     <ion-col size="8">
