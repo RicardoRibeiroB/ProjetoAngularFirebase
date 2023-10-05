@@ -14,6 +14,7 @@ export class FuncionarioPage {
   inserir = 1;
   mensagem: any;
   filtro: any;
+  codigo: any;
   constructor(){
     this.getFuncionarios()
     this.getAllFuncionarios()
@@ -104,8 +105,9 @@ export class FuncionarioPage {
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
-  modalAtt(isOpen2: boolean) {
+  modalAtt(isOpen2: boolean, codigo: any) {
     this.isModalOpen2 = isOpen2;
+    this.codigo = codigo;
   }
   
   
@@ -136,7 +138,8 @@ export class FuncionarioPage {
   }
   atualizarFuncionario(form: any){
     let funcionarios = form;
-    // console.log(form);
+    funcionarios.CodFun = this.codigo;
+    //  console.log(form);
     this.isLoading = true;
     fetch('http://localhost/exercicio/funcionario/atualizar_funcionario.php',
     {
@@ -162,6 +165,8 @@ export class FuncionarioPage {
   }
   consultar(dados: any){
     let endpoint = '';
+    let funcionarios = dados;
+    funcionarios.CodFun = this.codigo;
     let funcionario = { campo: dados.campo }
     if(this.filtro == "nome"){
       endpoint = 'http://localhost/exercicio/funcionario/consultar_funcionario_por_nome.php';
